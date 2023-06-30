@@ -72,3 +72,4 @@ const setDPI = () => {
     // CSS에서 설정한 크기와 맞춰주기 위한 scale 조정
     ctx.scale(dpr, dpr);
 };
+//# sourceMappingURL=index.js.map

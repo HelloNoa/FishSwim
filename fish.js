@@ -105,3 +105,4 @@ export class Fish {
         }
     }
 }
+//# sourceMappingURL=fish.js.map

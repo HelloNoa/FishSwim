@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "ES2022",
     "target": "es2022",
-    "sourceMap": false
+    "sourceMap": true
   },
   "exclude": [
     "node_modules"
