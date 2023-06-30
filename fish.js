@@ -77,9 +77,14 @@ export class Fish {
     setVecter(key, status) {
         switch (key) {
             case "w":
+            case "W":
+            case "ㅈ":
+            case "ㅉ":
                 this.vecter.up = status;
                 break;
             case "a":
+            case "A":
+            case "ㅁ":
                 this.vecter.left = status;
                 if (status) {
                     this.flip = false;
@@ -89,9 +94,13 @@ export class Fish {
                 }
                 break;
             case "s":
+            case "S":
+            case "ㄴ":
                 this.vecter.down = status;
                 break;
             case "d":
+            case "D":
+            case "ㅇ":
                 this.vecter.right = status;
                 if (status) {
                     this.flip = true;
