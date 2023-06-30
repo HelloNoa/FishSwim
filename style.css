@@ -1,8 +1,14 @@
 body {
   text-align: center;
 }
-
-canvas#game {
+body #frame .img {
+  display: none;
+  position: absolute;
+}
+body #frame .img.main {
+  display: inline-block;
+}
+body #frame canvas#game {
   width: 696px;
   height: 564px;
   background: black;

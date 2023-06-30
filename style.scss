@@ -1,9 +1,21 @@
 body {
-    text-align: center;
+  text-align: center;
+
+  #frame {
+    .img {
+      display: none;
+      position: absolute;
+
+      &.main {
+        display: inline-block;
+      }
+    }
+
+    canvas#game {
+      width: 696px;
+      height: 564px;
+      background: black;
+    }
+  }
 }
 
-canvas#game {
-    width: 696px;
-    height: 564px;
-    background: black;
-}
