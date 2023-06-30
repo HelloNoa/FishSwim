@@ -5,8 +5,23 @@ import {Enemy} from './enemy.js';
 export const canvas = document.getElementById("game") as HTMLCanvasElement;
 export const ctx = canvas.getContext("2d");
 var img = new Image();
-img.src = "fish.png";
-const Player = new Fish(200, 300, 1, 100, 50);
+let ani = false
+const IMAGE = {
+    main1: new Image(),
+    main2: new Image(),
+}
+setInterval(() => {
+    ani = !ani
+    if (ani) {
+        img.src = "/fishgame/nooki/mainfish2.png";
+    } else {
+        img.src = "/fishgame/nooki/mainfish1.png";
+    }
+
+
+}, 700)
+img.src = "/fishgame/nooki/mainfish1.png";
+const Player = new Fish(200, 300, 1.5, 352 * 0.5, 213 * 0.5);
 
 img.onload = () => {
     ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
@@ -25,6 +40,12 @@ window.onkeyup = (e) => {
 };
 
 window.onload = () => {
+    document.querySelector('img.img.main').addEventListener('click', (e: Event) => {
+        (e.target as HTMLElement).style.display = 'none';
+    });
+    document.querySelector('img.img.gameover').addEventListener('click', (e: Event) => {
+        (e.target as HTMLElement).style.display = 'none';
+    });
     setDPI();
     console.log("onload")
     setInterval(move, 10)
@@ -59,7 +80,7 @@ const move = () => {
         // ctx.translate(canvas.width / 2 - Player.width / 2, canvas.height / 2 - Player.height / 2);
         ctx.translate(canvas.width / 2 + Player.width / 2, canvas.height / 2 - Player.height / 2);
         ctx.scale(-1, 1);
-        ctx.translate(canvas.width / 2 - Player.width/2, -canvas.height / 2 + Player.height / 2);
+        ctx.translate(canvas.width / 2 - Player.width / 2, -canvas.height / 2 + Player.height / 2);
         ctx.drawImage(img, -Player.x, Player.y, Player.width, Player.height);
         ctx.restore();
     }

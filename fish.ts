@@ -21,7 +21,7 @@ export class Fish {
         this.width = _width;
         this.height = _height;
 
-        this.flip = false;
+        this.flip = true;
 
         this.vecter = {
             up: false,
@@ -116,9 +116,9 @@ export class Fish {
             case "ㅁ":
                 this.vecter.left = status;
                 if (status) {
-                    this.flip = false;
-                } else if (this.vecter.right) {
                     this.flip = true;
+                } else if (this.vecter.right) {
+                    this.flip = false;
                 }
                 break;
             case "s":
@@ -131,9 +131,9 @@ export class Fish {
             case "ㅇ":
                 this.vecter.right = status;
                 if (status) {
-                    this.flip = true;
-                } else if (this.vecter.left) {
                     this.flip = false;
+                } else if (this.vecter.left) {
+                    this.flip = true;
                 }
                 break;
             default:

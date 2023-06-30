@@ -3,8 +3,22 @@ import { Enemy } from './enemy.js';
 export const canvas = document.getElementById("game");
 export const ctx = canvas.getContext("2d");
 var img = new Image();
-img.src = "fish.png";
-const Player = new Fish(200, 300, 1, 100, 50);
+let ani = false;
+const IMAGE = {
+    main1: new Image(),
+    main2: new Image(),
+};
+setInterval(() => {
+    ani = !ani;
+    if (ani) {
+        img.src = "/fishgame/nooki/mainfish2.png";
+    }
+    else {
+        img.src = "/fishgame/nooki/mainfish1.png";
+    }
+}, 700);
+img.src = "/fishgame/nooki/mainfish1.png";
+const Player = new Fish(200, 300, 1.5, 352 * 0.5, 213 * 0.5);
 img.onload = () => {
     ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
 };
@@ -20,6 +34,12 @@ window.onkeyup = (e) => {
     Player.setVecter(key, false);
 };
 window.onload = () => {
+    document.querySelector('img.img.main').addEventListener('click', (e) => {
+        e.target.style.display = 'none';
+    });
+    document.querySelector('img.img.gameover').addEventListener('click', (e) => {
+        e.target.style.display = 'none';
+    });
     setDPI();
     console.log("onload");
     setInterval(move, 10);
