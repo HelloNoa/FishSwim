@@ -6,6 +6,8 @@ export class Fish {
         this.width = _width;
         this.height = _height;
 
+        this.flip = false;
+
         this.vecter = {
             up: false,
             left: false,
@@ -70,11 +72,20 @@ export class Fish {
         return this._height = height;
     }
 
+    get flip() {
+        return this._flip;
+    }
+
+    set flip(flip) {
+        this._flip = flip;
+    }
+
     get vecter() {
         return this._vecter;
     }
+
     set vecter(vecter) {
-        this._vecter=vecter;
+        this._vecter = vecter;
     }
 
     setVecter(key, status) {
@@ -84,12 +95,22 @@ export class Fish {
                 break;
             case "a":
                 this.vecter.left = status;
+                if (status) {
+                    this.flip = false;
+                } else if (this.vecter.right) {
+                    this.flip = true;
+                }
                 break;
             case "s":
                 this.vecter.down = status;
                 break;
             case "d":
                 this.vecter.right = status;
+                if (status) {
+                    this.flip = true;
+                } else if (this.vecter.left) {
+                    this.flip = false;
+                }
                 break;
             default:
                 break
