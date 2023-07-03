@@ -1,30 +1,51 @@
 import { Fish } from './fish.js';
 import { Enemy } from './enemy.js';
+export const width = 696;
+export const height = 564;
 export const canvas = document.getElementById("game");
 export const ctx = canvas.getContext("2d");
-var img = new Image();
 let ani = false;
+var img = new Image();
+let enemyImg = new Image();
+enemyImg.src = "/fishgame/nooki/greenfish1.png";
+const EnemyFish = new Enemy(0, 0, 1, 100, 50);
+const setImg = (imgSrc) => {
+    const img = new Image();
+    img.src = imgSrc;
+    return img;
+};
+const Player = new Fish(200, 300, 1.5, 352 * 0.3, 213 * 0.3);
+img.src = "/fishgame/nooki/mainfish1.png";
+img.onload = () => {
+    ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
+};
 const IMAGE = {
-    main1: new Image(),
-    main2: new Image(),
+    main1: setImg('/fishgame/nooki/mainfish2.png'),
+    main2: setImg('/fishgame/nooki/mainfish1.png'),
+    green1: setImg('/fishgame/nooki/greenfish1.png'),
+    green2: setImg('/fishgame/nooki/greenfish2.png'),
+    red1: setImg('/fishgame/nooki/redfish1.png'),
+    red2: setImg('/fishgame/nooki/redfish2.png'),
+    yellow1: setImg('/fishgame/nooki/yellowfish1.png'),
+    yellow2: setImg('/fishgame/nooki/yellowfish2.png'),
+    pink1: setImg('/fishgame/nooki/pinkfish1.png'),
+    pink2: setImg('/fishgame/nooki/pinkfish2.png'),
+    monster1: setImg('/fishgame/nooki/monsterfish1.png'),
+    monster2: setImg('/fishgame/nooki/monsterfish2.png'),
+    bone1: setImg('/fishgame/nooki/bonefish1.png'),
+    bone2: setImg('/fishgame/nooki/bonefish2.png'),
 };
 setInterval(() => {
     ani = !ani;
     if (ani) {
-        img.src = "/fishgame/nooki/mainfish2.png";
+        img = IMAGE.main1;
+        enemyImg = IMAGE.green1;
     }
     else {
-        img.src = "/fishgame/nooki/mainfish1.png";
+        img = IMAGE.main2;
+        enemyImg = IMAGE.green2;
     }
 }, 700);
-img.src = "/fishgame/nooki/mainfish1.png";
-const Player = new Fish(200, 300, 1.5, 352 * 0.5, 213 * 0.5);
-img.onload = () => {
-    ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
-};
-const enemyImg = new Image();
-enemyImg.src = "fish.png";
-const EnemyFish = new Enemy(0, 0, 1, 30, 15);
 window.onkeydown = (e) => {
     const key = e.key.toLocaleLowerCase();
     Player.setVecter(key, true);
@@ -52,18 +73,18 @@ const move = () => {
         Player.addForceXY(0, -Player.moveSpeed);
     if (Player.vecter.left && Player.x >= 0)
         Player.addForceXY(-Player.moveSpeed, 0);
-    if (Player.vecter.right && Player.x <= canvas.width - Player.width)
+    if (Player.vecter.right && Player.x <= width - Player.width)
         Player.addForceXY(Player.moveSpeed, 0);
-    if (Player.vecter.down && Player.y <= canvas.height - Player.height)
+    if (Player.vecter.down && Player.y <= height - Player.height)
         Player.addForceXY(0, Player.moveSpeed);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, width, height);
     EnemyFish.move();
     ctx.save();
     ctx.translate(canvas.width / 2 + EnemyFish.width / 2, canvas.height / 2 - EnemyFish.height / 2);
     // ctx.rotate(180*Math.PI/180);
     ctx.scale(-1, 1);
     ctx.translate(canvas.width / 2 - EnemyFish.width / 2, -canvas.height / 2 + EnemyFish.height / 2);
-    ctx.drawImage(img, EnemyFish.x, EnemyFish.y, EnemyFish.width, EnemyFish.height);
+    ctx.drawImage(enemyImg, EnemyFish.x, EnemyFish.y, EnemyFish.width, EnemyFish.height);
     ctx.restore();
     if (Player.flip) {
         ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
@@ -80,8 +101,6 @@ const move = () => {
 };
 const setDPI = () => {
     // 디스플레이 크기 설정 (css 픽셀)
-    const width = 696;
-    const height = 564;
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
     // 메모리에 실제 크기 설정 (픽셀 밀도를 고려하여 크기 조정)

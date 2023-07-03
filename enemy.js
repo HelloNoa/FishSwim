@@ -12,7 +12,7 @@ export class Enemy extends Fish {
         }
         else {
         }
-        console.log('test');
+        // console.log('test')
     }
 }
 //# sourceMappingURL=enemy.js.map

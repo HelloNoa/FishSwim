@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "sass": "^1.63.6",
-    "tsc": "^2.0.4",
     "typescript": "^5.1.6"
   }
 }
