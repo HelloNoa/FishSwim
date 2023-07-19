@@ -1,4 +1,4 @@
-import { IMAGE } from "index.js";
+import { IMAGE } from "./index.js";
 export class Fish {
     constructor(_x = 0, _y = 0, _moveSpeed = 1, _width = 10, _height = 10, _img = IMAGE.main) {
         this.x = _x;

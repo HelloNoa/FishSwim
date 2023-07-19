@@ -1,4 +1,4 @@
-import {IMAGE} from "index.js";
+import {IMAGE} from "./index.js";
 
 type T_Vecter = {
     up: boolean;
