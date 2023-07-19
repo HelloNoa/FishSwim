@@ -89,7 +89,7 @@ const move = () => {
     if (Player.vecter.down && Player.y <= height - Player.height)
         Player.addForceXY(0, Player.moveSpeed);
     // ctx.clearRect(0, 0, width, height);
-    ctx.drawImage(BGImg(), 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(BGImg(), 0, 0, width, height);
     EnemyFish.move();
     if (EnemyFish.flip) {
         ctx.drawImage(enemyImg, EnemyFish.x, EnemyFish.y, EnemyFish.width, EnemyFish.height);
