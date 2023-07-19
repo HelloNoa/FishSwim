@@ -1,11 +1,4 @@
 export class Fish {
-    _x;
-    _y;
-    _moveSpeed;
-    _width;
-    _height;
-    _flip;
-    _vecter;
     constructor(_x = 0, _y = 0, _moveSpeed = 1, _width = 10, _height = 10) {
         this.x = _x;
         this.y = _y;
