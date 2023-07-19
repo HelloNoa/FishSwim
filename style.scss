@@ -1,4 +1,34 @@
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+@mixin min {
+  @media (max-width: #{$breakpoint-mobile - 1px}) {
+    @content;
+    width: 320px;
+    height: auto;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
 body {
+  margin: 0;
   text-align: center;
   background: black;
 
@@ -10,12 +40,25 @@ body {
       &.main {
         display: inline-block;
       }
+
+      @include min {
+      }
+      @include mobile {
+        width: 100%;
+        height: auto;
+      }
     }
 
     canvas#game {
       width: 696px;
       height: 564px;
       background: black;
+      @include min {
+      }
+      @include mobile {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }

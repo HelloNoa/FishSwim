@@ -1,4 +1,5 @@
 body {
+  margin: 0;
   text-align: center;
   background: black;
 }
@@ -9,10 +10,34 @@ body #frame .img {
 body #frame .img.main {
   display: inline-block;
 }
+@media (max-width: 319px) {
+  body #frame .img {
+    width: 320px;
+    height: auto;
+  }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  body #frame .img {
+    width: 100%;
+    height: auto;
+  }
+}
 body #frame canvas#game {
   width: 696px;
   height: 564px;
   background: black;
+}
+@media (max-width: 319px) {
+  body #frame canvas#game {
+    width: 320px;
+    height: auto;
+  }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  body #frame canvas#game {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
