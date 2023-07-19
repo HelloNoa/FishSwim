@@ -2,23 +2,63 @@ import {Fish} from './fish.js';
 import {Enemy} from './enemy.js';
 import {setImg} from './util/index.js';
 
+export const IMAGE = {
+    main: [
+        setImg('./fishgame/nooki/mainfish1.png'),
+        setImg('./fishgame/nooki/mainfish2.png'),
+    ],
+    green: [
+        setImg('./fishgame/nooki/greenfish1.png'),
+        setImg('./fishgame/nooki/greenfish2.png'),
+    ],
+    red: [
+        setImg('./fishgame/nooki/redfish1.png'),
+        setImg('./fishgame/nooki/redfish2.png'),
+    ],
+    yellow: [
+        setImg('./fishgame/nooki/yellowfish1.png'),
+        setImg('./fishgame/nooki/yellowfish2.png'),
+    ],
+    pink: [
+        setImg('./fishgame/nooki/pinkfish1.png'),
+        setImg('./fishgame/nooki/pinkfish2.png'),
+    ],
+    monster: [
+        setImg('./fishgame/nooki/monsterfish1.png'),
+        setImg('./fishgame/nooki/monsterfish2.png'),
+    ],
+    bone: [
+        setImg('./fishgame/nooki/bonefish1.png'),
+        setImg('./fishgame/nooki/bonefish2.png'),
+    ],
+}
 export const width = 696
 export const height = 564
 
+export const FishWidth = 352;
+export const FishHeight = 213;
 export const canvas = document.getElementById("game") as HTMLCanvasElement;
 export const ctx = canvas.getContext("2d");
-let ani = false
-var img = new Image();
-let enemyImg = new Image();
-enemyImg.src = "./fishgame/nooki/greenfish1.png";
-const EnemyFish = new Enemy(0, 0, 1, 100, 50)
+let ani = 0
+const ARRAY = [
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.2, FishHeight * 0.2, IMAGE.red),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.4, FishHeight * 0.4, IMAGE.yellow),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.5, FishHeight * 0.5, IMAGE.pink),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.6, FishHeight * 0.6, IMAGE.monster),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth, FishHeight, IMAGE.bone),
 
-const Player = new Fish(200, 300, 1.5, 352 * 0.3, 213 * 0.3);
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.2, FishHeight * 0.2, IMAGE.red),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.4, FishHeight * 0.4, IMAGE.yellow),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.5, FishHeight * 0.5, IMAGE.pink),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.6, FishHeight * 0.6, IMAGE.monster),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth, FishHeight, IMAGE.bone),
+]
+const EnemyFish = ARRAY;
+// const EnemyFish = new Array(10).fill('o').map(e => new Enemy(0, 0, Math.random() + 0.1, 100, 50, IMAGE.green))
+const Player = new Fish(200, 300, 1.5, FishWidth * 0.3, FishHeight * 0.3, IMAGE.main);
 
-img.src = "./fishgame/nooki/mainfish1.png";
-img.onload = () => {
-    ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
-}
 const BGImg = ((ms: number) => {
     let idx = 0;
     const img = {
@@ -35,31 +75,13 @@ const BGImg = ((ms: number) => {
         return img[idx];
     }
 })(400)
-const IMAGE = {
-    main1: setImg('./fishgame/nooki/mainfish2.png'),
-    main2: setImg('./fishgame/nooki/mainfish1.png'),
-    green1: setImg('./fishgame/nooki/greenfish1.png'),
-    green2: setImg('./fishgame/nooki/greenfish2.png'),
-    red1: setImg('./fishgame/nooki/redfish1.png'),
-    red2: setImg('./fishgame/nooki/redfish2.png'),
-    yellow1: setImg('./fishgame/nooki/yellowfish1.png'),
-    yellow2: setImg('./fishgame/nooki/yellowfish2.png'),
-    pink1: setImg('./fishgame/nooki/pinkfish1.png'),
-    pink2: setImg('./fishgame/nooki/pinkfish2.png'),
-    monster1: setImg('./fishgame/nooki/monsterfish1.png'),
-    monster2: setImg('./fishgame/nooki/monsterfish2.png'),
-    bone1: setImg('./fishgame/nooki/bonefish1.png'),
-    bone2: setImg('./fishgame/nooki/bonefish2.png'),
-}
+
 
 setInterval(() => {
-    ani = !ani
     if (ani) {
-        img = IMAGE.main1;
-        enemyImg = IMAGE.green1;
+        ani = 0
     } else {
-        img = IMAGE.main2;
-        enemyImg = IMAGE.green2;
+        ani = 1
     }
 }, 700)
 
@@ -98,27 +120,30 @@ const move = () => {
         Player.addForceXY(0, Player.moveSpeed)
     // ctx.clearRect(0, 0, width, height);
     ctx.drawImage(BGImg(), 0, 0, width, height)
-    EnemyFish.move();
-    if (EnemyFish.flip) {
-        ctx.drawImage(enemyImg, EnemyFish.x, EnemyFish.y, EnemyFish.width, EnemyFish.height);
-    } else {
-        ctx.save();
-        // ctx.translate(canvas.width / 2 - Player.width / 2, canvas.height / 2 - Player.height / 2);
-        ctx.translate(canvas.width / 2 + EnemyFish.width / 2, canvas.height / 2 - EnemyFish.height / 2);
-        ctx.scale(-1, 1);
-        ctx.translate(canvas.width / 2 - EnemyFish.width / 2, -canvas.height / 2 + EnemyFish.height / 2);
-        ctx.drawImage(enemyImg, -EnemyFish.x, EnemyFish.y, EnemyFish.width, EnemyFish.height);
-        ctx.restore();
-    }
+    EnemyFish.map(e => {
+        e.move()
+        if (e.flip) {
+            ctx.drawImage(e.img[ani], e.x, e.y, e.width, e.height);
+        } else {
+            ctx.save();
+            // ctx.translate(canvas.width / 2 - Player.width / 2, canvas.height / 2 - Player.height / 2);
+            ctx.translate(canvas.width / 2 + e.width / 2, canvas.height / 2 - e.height / 2);
+            ctx.scale(-1, 1);
+            ctx.translate(canvas.width / 2 - e.width / 2, -canvas.height / 2 + e.height / 2);
+            ctx.drawImage(e.img[ani], -e.x, e.y, e.width, e.height);
+            ctx.restore();
+        }
+        e.update();
+    })
     if (Player.flip) {
-        ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
+        ctx.drawImage(Player.img[ani], Player.x, Player.y, Player.width, Player.height);
     } else {
         ctx.save();
         // ctx.translate(canvas.width / 2 - Player.width / 2, canvas.height / 2 - Player.height / 2);
         ctx.translate(canvas.width / 2 + Player.width / 2, canvas.height / 2 - Player.height / 2);
         ctx.scale(-1, 1);
         ctx.translate(canvas.width / 2 - Player.width / 2, -canvas.height / 2 + Player.height / 2);
-        ctx.drawImage(img, -Player.x, Player.y, Player.width, Player.height);
+        ctx.drawImage(Player.img[ani], -Player.x, Player.y, Player.width, Player.height);
         ctx.restore();
     }
 

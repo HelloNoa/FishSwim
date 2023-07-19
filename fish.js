@@ -1,5 +1,6 @@
+import { IMAGE } from "index.js";
 export class Fish {
-    constructor(_x = 0, _y = 0, _moveSpeed = 1, _width = 10, _height = 10) {
+    constructor(_x = 0, _y = 0, _moveSpeed = 1, _width = 10, _height = 10, _img = IMAGE.main) {
         this.x = _x;
         this.y = _y;
         this.moveSpeed = _moveSpeed;
@@ -12,6 +13,7 @@ export class Fish {
             right: false,
             down: false,
         };
+        this.img = _img;
     }
     get x() {
         return this._x;
@@ -60,6 +62,12 @@ export class Fish {
     }
     set flip(flip) {
         this._flip = flip;
+    }
+    get img() {
+        return this._img;
+    }
+    set img(img) {
+        this._img = img;
     }
     get vecter() {
         return this._vecter;

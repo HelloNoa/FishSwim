@@ -1,8 +1,10 @@
+import {IMAGE} from "index.js";
+
 type T_Vecter = {
-    up:boolean;
-    left:boolean;
-    right:boolean;
-    down:boolean;
+    up: boolean;
+    left: boolean;
+    right: boolean;
+    down: boolean;
 }
 
 export class Fish {
@@ -13,8 +15,9 @@ export class Fish {
     private _height: number;
     private _flip: boolean;
     private _vecter: T_Vecter;
+    private _img: HTMLImageElement[];
 
-    constructor(_x: number = 0, _y: number = 0, _moveSpeed: number = 1, _width: number = 10, _height: number = 10) {
+    constructor(_x: number = 0, _y: number = 0, _moveSpeed: number = 1, _width: number = 10, _height: number = 10, _img: HTMLImageElement[] = IMAGE.main) {
         this.x = _x;
         this.y = _y;
         this.moveSpeed = _moveSpeed;
@@ -29,6 +32,7 @@ export class Fish {
             right: false,
             down: false,
         }
+        this.img = _img;
     }
 
     get x() {
@@ -44,7 +48,7 @@ export class Fish {
         return this._y;
     }
 
-    set y(y:number) {
+    set y(y: number) {
         this._y = y;
     }
 
@@ -93,6 +97,14 @@ export class Fish {
 
     set flip(flip) {
         this._flip = flip;
+    }
+
+    get img() {
+        return this._img;
+    }
+
+    set img(img) {
+        this._img = img;
     }
 
     get vecter() {
