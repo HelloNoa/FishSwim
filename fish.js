@@ -76,16 +76,20 @@ export class Fish {
         this._vecter = vecter;
     }
     setVecter(key, status) {
+        e.currentTarget.classList.add('active');
+        let eventKey = '';
         switch (key) {
             case "w":
             case "W":
             case "ㅈ":
             case "ㅉ":
+                eventKey = 'w';
                 this.vecter.up = status;
                 break;
             case "a":
             case "A":
             case "ㅁ":
+                eventKey = 'a';
                 this.vecter.left = status;
                 if (status) {
                     this.flip = true;
@@ -97,11 +101,13 @@ export class Fish {
             case "s":
             case "S":
             case "ㄴ":
+                eventKey = 's';
                 this.vecter.down = status;
                 break;
             case "d":
             case "D":
             case "ㅇ":
+                eventKey = 'd';
                 this.vecter.right = status;
                 if (status) {
                     this.flip = false;
@@ -112,6 +118,12 @@ export class Fish {
                 break;
             default:
                 break;
+        }
+        if (status) {
+            document.querySelector(`.btn.btn_${eventKey}`).classList.add('active');
+        }
+        else {
+            document.querySelector(`.btn.btn_${eventKey}`).classList.remove('active');
         }
     }
 }

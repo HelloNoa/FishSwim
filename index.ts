@@ -102,6 +102,16 @@ window.onload = () => {
     document.querySelector('img.img.gameover').addEventListener('click', (e: Event) => {
         (e.target as HTMLElement).style.display = 'none';
     });
+    document.querySelectorAll('.btn').forEach(e => e.addEventListener('mousedown', (e: Event) => {
+        const key = e.currentTarget.classList[1].split('btn_')[1];
+        e.currentTarget.classList.add('active');
+        Player.setVecter(key, true);
+    }))
+    document.querySelectorAll('.btn').forEach(e => e.addEventListener('mouseup', (e: Event) => {
+        const key = e.currentTarget.classList[1].split('btn_')[1];
+        e.currentTarget.classList.remove('active');
+        Player.setVecter(key, false);
+    }))
     setDPI();
     console.log("onload")
     setInterval(move, 10)

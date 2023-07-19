@@ -1,4 +1,5 @@
 body {
+  color: white;
   margin: 0;
   text-align: center;
   background: black;
@@ -21,6 +22,25 @@ body #frame .img.main {
     width: 100%;
     height: auto;
   }
+}
+body #frame .btn {
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  font-weight: bolder;
+}
+body #frame .btn.btn_w {
+  margin: 0 auto;
+}
+body #frame .btn.btn_a, body #frame .btn.btn_s, body #frame .btn.btn_d {
+  display: inline-block;
+}
+body #frame .btn.active {
+  background: white;
+  color: black;
 }
 body #frame canvas#game {
   width: 696px;
