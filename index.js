@@ -1,5 +1,6 @@
 import { Fish } from './fish.js';
 import { Enemy } from './enemy.js';
+import { setImg } from './util';
 export const width = 696;
 export const height = 564;
 export const canvas = document.getElementById("game");
@@ -9,16 +10,26 @@ var img = new Image();
 let enemyImg = new Image();
 enemyImg.src = "/fishgame/nooki/greenfish1.png";
 const EnemyFish = new Enemy(0, 0, 1, 100, 50);
-const setImg = (imgSrc) => {
-    const img = new Image();
-    img.src = imgSrc;
-    return img;
-};
 const Player = new Fish(200, 300, 1.5, 352 * 0.3, 213 * 0.3);
 img.src = "/fishgame/nooki/mainfish1.png";
 img.onload = () => {
     ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
 };
+const BGImg = ((ms) => {
+    let idx = 0;
+    const img = {
+        0: setImg('/fishgame/background1.png'),
+        1: setImg('/fishgame/background2.png'),
+        2: setImg('/fishgame/background3.png')
+    };
+    setInterval(() => {
+        idx++;
+        idx = idx % 3;
+    }, ms);
+    return () => {
+        return img[idx];
+    };
+})(400);
 const IMAGE = {
     main1: setImg('/fishgame/nooki/mainfish2.png'),
     main2: setImg('/fishgame/nooki/mainfish1.png'),
@@ -77,15 +88,21 @@ const move = () => {
         Player.addForceXY(Player.moveSpeed, 0);
     if (Player.vecter.down && Player.y <= height - Player.height)
         Player.addForceXY(0, Player.moveSpeed);
-    ctx.clearRect(0, 0, width, height);
+    // ctx.clearRect(0, 0, width, height);
+    ctx.drawImage(BGImg(), 0, 0, canvas.width, canvas.height);
     EnemyFish.move();
-    ctx.save();
-    ctx.translate(canvas.width / 2 + EnemyFish.width / 2, canvas.height / 2 - EnemyFish.height / 2);
-    // ctx.rotate(180*Math.PI/180);
-    ctx.scale(-1, 1);
-    ctx.translate(canvas.width / 2 - EnemyFish.width / 2, -canvas.height / 2 + EnemyFish.height / 2);
-    ctx.drawImage(enemyImg, EnemyFish.x, EnemyFish.y, EnemyFish.width, EnemyFish.height);
-    ctx.restore();
+    if (EnemyFish.flip) {
+        ctx.drawImage(enemyImg, EnemyFish.x, EnemyFish.y, EnemyFish.width, EnemyFish.height);
+    }
+    else {
+        ctx.save();
+        // ctx.translate(canvas.width / 2 - Player.width / 2, canvas.height / 2 - Player.height / 2);
+        ctx.translate(canvas.width / 2 + EnemyFish.width / 2, canvas.height / 2 - EnemyFish.height / 2);
+        ctx.scale(-1, 1);
+        ctx.translate(canvas.width / 2 - EnemyFish.width / 2, -canvas.height / 2 + EnemyFish.height / 2);
+        ctx.drawImage(enemyImg, -EnemyFish.x, EnemyFish.y, EnemyFish.width, EnemyFish.height);
+        ctx.restore();
+    }
     if (Player.flip) {
         ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
     }
