@@ -1,6 +1,6 @@
 import { Fish } from './fish.js';
 import { Enemy } from './enemy.js';
-import { setImg } from './util/index.js';
+import { setImg } from './util';
 export const width = 696;
 export const height = 564;
 export const canvas = document.getElementById("game");
@@ -8,19 +8,19 @@ export const ctx = canvas.getContext("2d");
 let ani = false;
 var img = new Image();
 let enemyImg = new Image();
-enemyImg.src = "/fishgame/nooki/greenfish1.png";
+enemyImg.src = "./fishgame/nooki/greenfish1.png";
 const EnemyFish = new Enemy(0, 0, 1, 100, 50);
 const Player = new Fish(200, 300, 1.5, 352 * 0.3, 213 * 0.3);
-img.src = "/fishgame/nooki/mainfish1.png";
+img.src = "./fishgame/nooki/mainfish1.png";
 img.onload = () => {
     ctx.drawImage(img, Player.x, Player.y, Player.width, Player.height);
 };
 const BGImg = ((ms) => {
     let idx = 0;
     const img = {
-        0: setImg('/fishgame/background1.png'),
-        1: setImg('/fishgame/background2.png'),
-        2: setImg('/fishgame/background3.png')
+        0: setImg('./fishgame/background1.png'),
+        1: setImg('./fishgame/background2.png'),
+        2: setImg('./fishgame/background3.png')
     };
     setInterval(() => {
         idx++;
@@ -31,20 +31,20 @@ const BGImg = ((ms) => {
     };
 })(400);
 const IMAGE = {
-    main1: setImg('/fishgame/nooki/mainfish2.png'),
-    main2: setImg('/fishgame/nooki/mainfish1.png'),
-    green1: setImg('/fishgame/nooki/greenfish1.png'),
-    green2: setImg('/fishgame/nooki/greenfish2.png'),
-    red1: setImg('/fishgame/nooki/redfish1.png'),
-    red2: setImg('/fishgame/nooki/redfish2.png'),
-    yellow1: setImg('/fishgame/nooki/yellowfish1.png'),
-    yellow2: setImg('/fishgame/nooki/yellowfish2.png'),
-    pink1: setImg('/fishgame/nooki/pinkfish1.png'),
-    pink2: setImg('/fishgame/nooki/pinkfish2.png'),
-    monster1: setImg('/fishgame/nooki/monsterfish1.png'),
-    monster2: setImg('/fishgame/nooki/monsterfish2.png'),
-    bone1: setImg('/fishgame/nooki/bonefish1.png'),
-    bone2: setImg('/fishgame/nooki/bonefish2.png'),
+    main1: setImg('./fishgame/nooki/mainfish2.png'),
+    main2: setImg('./fishgame/nooki/mainfish1.png'),
+    green1: setImg('./fishgame/nooki/greenfish1.png'),
+    green2: setImg('./fishgame/nooki/greenfish2.png'),
+    red1: setImg('./fishgame/nooki/redfish1.png'),
+    red2: setImg('./fishgame/nooki/redfish2.png'),
+    yellow1: setImg('./fishgame/nooki/yellowfish1.png'),
+    yellow2: setImg('./fishgame/nooki/yellowfish2.png'),
+    pink1: setImg('./fishgame/nooki/pinkfish1.png'),
+    pink2: setImg('./fishgame/nooki/pinkfish2.png'),
+    monster1: setImg('./fishgame/nooki/monsterfish1.png'),
+    monster2: setImg('./fishgame/nooki/monsterfish2.png'),
+    bone1: setImg('./fishgame/nooki/bonefish1.png'),
+    bone2: setImg('./fishgame/nooki/bonefish2.png'),
 };
 setInterval(() => {
     ani = !ani;
