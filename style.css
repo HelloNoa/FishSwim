@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  background: black;
 }
 body #frame .img {
   display: none;
