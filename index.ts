@@ -1,6 +1,6 @@
 import {Fish} from './fish.js';
 import {Enemy} from './enemy.js';
-import {setImg} from './util';
+import {setImg} from './util/index.js';
 
 export const width = 696
 export const height = 564

@@ -6,9 +6,11 @@ export class Enemy extends Fish {
     }
     move() {
         if (this.vecter.left) {
+            this.flip = true;
             this.addForceXY(-this.moveSpeed, 0);
         }
         else {
+            this.flip = false;
             this.addForceXY(this.moveSpeed, 0);
         }
     }

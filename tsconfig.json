@@ -3,9 +3,27 @@
     "module": "ES2022",
     "target": "es2022",
     "sourceMap": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@constants/*": [
+        "src/constants/*"
+      ],
+      "@routers/*": [
+        "src/routers/*"
+      ],
+      "@controllers/*": [
+        "src/controllers/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
