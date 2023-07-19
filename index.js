@@ -142,8 +142,8 @@ const move = () => {
 };
 const setDPI = () => {
     // 디스플레이 크기 설정 (css 픽셀)
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
+    // canvas.style.width = `${width}px`;
+    // canvas.style.height = `${height}px`;
     // 메모리에 실제 크기 설정 (픽셀 밀도를 고려하여 크기 조정)
     const dpr = window.devicePixelRatio;
     canvas.width = width * dpr;
