@@ -111,7 +111,7 @@ window.onload = () => {
         e.addEventListener('touchstart', (e: Event) => {
             _func(e);
         })
-        e.addEventListener(' mousedown', (e: Event) => {
+        e.addEventListener('mousedown', (e: Event) => {
             _func(e);
         })
     })

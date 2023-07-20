@@ -58,9 +58,37 @@ body {
       border: 1px solid white;
       box-sizing: border-box;
       font-weight: bolder;
+      position:relative;
 
+      &:after {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 1.6em;
+          line-height: 50px;
+      }
       &.btn_w {
         margin: 0 auto;
+        &:after {
+          content: "W";
+        }
+      }
+      &.btn_a {
+        &:after {
+          content: "A";
+        }
+      }
+      &.btn_s {
+        &:after {
+          content: "S";
+        }
+      }
+      &.btn_d {
+        &:after {
+          content: "D";
+        }
       }
 
       &.btn_a, &.btn_s, &.btn_d {
@@ -70,6 +98,9 @@ body {
       &.active {
         background: white;
         color: black;
+        &:after {
+          color:black;
+        }
       }
     }
 

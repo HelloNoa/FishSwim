@@ -102,7 +102,7 @@ window.onload = () => {
         e.addEventListener('touchstart', (e) => {
             _func(e);
         });
-        e.addEventListener(' mousedown', (e) => {
+        e.addEventListener('mousedown', (e) => {
             _func(e);
         });
     });

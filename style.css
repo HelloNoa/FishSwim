@@ -31,15 +31,40 @@ body #frame .btn {
   border: 1px solid white;
   box-sizing: border-box;
   font-weight: bolder;
+  position: relative;
+}
+body #frame .btn:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.6em;
+  line-height: 50px;
 }
 body #frame .btn.btn_w {
   margin: 0 auto;
+}
+body #frame .btn.btn_w:after {
+  content: "W";
+}
+body #frame .btn.btn_a:after {
+  content: "A";
+}
+body #frame .btn.btn_s:after {
+  content: "S";
+}
+body #frame .btn.btn_d:after {
+  content: "D";
 }
 body #frame .btn.btn_a, body #frame .btn.btn_s, body #frame .btn.btn_d {
   display: inline-block;
 }
 body #frame .btn.active {
   background: white;
+  color: black;
+}
+body #frame .btn.active:after {
   color: black;
 }
 body #frame canvas#game {
