@@ -34,6 +34,7 @@ html {
   -moz-user-select: -moz-none !important;
   -ms-user-select: none !important;
   user-select: none !important;
+  touch-action: pan-y;
 }
 
 body {
