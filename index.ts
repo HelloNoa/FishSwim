@@ -136,7 +136,6 @@ window.onload = () => {
     // }, 1000)
 }
 const move = () => {
-    console.log(Player.x, Player.y)
     if (Player.vecter.up && Player.y >= -Player.height / 2)
         Player.addForceXY(0, -Player.moveSpeed)
     if (Player.vecter.left && Player.x >= -Player.width / 2)
