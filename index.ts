@@ -57,7 +57,7 @@ const ARRAY = [
 ]
 const EnemyFish = ARRAY;
 // const EnemyFish = new Array(10).fill('o').map(e => new Enemy(0, 0, Math.random() + 0.1, 100, 50, IMAGE.green))
-const Player = new Fish(200, 300, 1.5, FishWidth * 0.3, FishHeight * 0.3, IMAGE.main);
+export const Player = new Fish(200, 300, 1.5, FishWidth * 0.15, FishHeight * 0.15, IMAGE.main);
 
 const BGImg = ((ms: number) => {
     let idx = 0;
@@ -103,7 +103,7 @@ window.onload = () => {
         (e.target as HTMLElement).style.display = 'none';
     });
     document.querySelectorAll('.btn').forEach(e => {
-        const _func = (e)=>{
+        const _func = (e) => {
             const key = e.currentTarget.classList[1].split('btn_')[1];
             e.currentTarget.classList.add('active');
             Player.setVecter(key, true);
@@ -116,7 +116,7 @@ window.onload = () => {
         })
     })
     document.querySelectorAll('.btn').forEach(e => {
-        const _func = (e)=>{
+        const _func = (e) => {
             const key = e.currentTarget.classList[1].split('btn_')[1];
             e.currentTarget.classList.remove('active');
             Player.setVecter(key, false);
