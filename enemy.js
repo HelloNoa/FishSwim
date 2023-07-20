@@ -1,5 +1,5 @@
 import { Fish } from './fish.js';
-import { height, IMAGE, Player, width } from "./index.js";
+import { FishWidth, height, IMAGE, Player, width } from "./index.js";
 import { d2d } from "./util/index.js";
 export class Enemy extends Fish {
     constructor(x = 0, y = 0, moveSpeed = 1, width = 10, height = 10, img = IMAGE.green) {
@@ -32,8 +32,9 @@ export class Enemy extends Fish {
     crash() {
         if (d2d(Player.mx, Player.my, this.mx, this.my) <= Math.max(this.height, Player.height) * 0.3) {
             this.setRandomStartingPosition();
-            Player.width *= 1.01;
-            Player.height *= 1.01;
+            const delta = this.width / FishWidth;
+            Player.width *= (1 + delta * 0.05);
+            Player.height *= (1 + delta * 0.05);
             console.log('먹었당');
         }
     }
