@@ -40,6 +40,12 @@ export const ctx = canvas.getContext("2d");
 let ani = 0;
 const ARRAY = [
     new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
+    new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.1, FishHeight * 0.1, IMAGE.green),
     new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.2, FishHeight * 0.2, IMAGE.red),
     new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.4, FishHeight * 0.4, IMAGE.yellow),
     new Enemy(0, 0, Math.random() * 0.5 + 0.5, FishWidth * 0.5, FishHeight * 0.5, IMAGE.pink),
@@ -54,7 +60,7 @@ const ARRAY = [
 ];
 const EnemyFish = ARRAY;
 // const EnemyFish = new Array(10).fill('o').map(e => new Enemy(0, 0, Math.random() + 0.1, 100, 50, IMAGE.green))
-export const Player = new Fish(200, 300, 1.5, FishWidth * 0.15, FishHeight * 0.15, IMAGE.main);
+export const Player = new Fish(200, 300, 1.5, FishWidth * 0.5, FishHeight * 0.5, IMAGE.main);
 const BGImg = ((ms) => {
     let idx = 0;
     const img = {
