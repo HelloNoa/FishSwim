@@ -1,3 +1,10 @@
+html {
+  -webkit-user-select: none !important;
+  -moz-user-select: -moz-none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
 body {
   color: white;
   margin: 0;
