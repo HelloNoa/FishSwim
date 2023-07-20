@@ -136,13 +136,14 @@ window.onload = () => {
     // }, 1000)
 }
 const move = () => {
-    if (Player.vecter.up && Player.y >= 0)
+    console.log(Player.x, Player.y)
+    if (Player.vecter.up && Player.y >= -Player.height / 2)
         Player.addForceXY(0, -Player.moveSpeed)
-    if (Player.vecter.left && Player.x >= 0)
+    if (Player.vecter.left && Player.x >= -Player.width / 2)
         Player.addForceXY(-Player.moveSpeed, 0)
-    if (Player.vecter.right && Player.x <= width - Player.width)
+    if (Player.vecter.right && Player.x <= width - Player.width / 2)
         Player.addForceXY(Player.moveSpeed, 0)
-    if (Player.vecter.down && Player.y <= height - Player.height)
+    if (Player.vecter.down && Player.y <= height - Player.height / 2)
         Player.addForceXY(0, Player.moveSpeed)
     // ctx.clearRect(0, 0, width, height);
     ctx.drawImage(BGImg(), 0, 0, width, height)
