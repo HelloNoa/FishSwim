@@ -1,4 +1,4 @@
-import {IMAGE} from "./index.js";
+import {FishHeight, FishWidth, IMAGE} from "./index.js";
 
 type T_Vecter = {
     up: boolean;
@@ -37,6 +37,14 @@ export class Fish {
 
     get x() {
         return this._x;
+    }
+
+    get mx() {
+        return this._x + this._width / 2
+    }
+
+    get my() {
+        return this._y + this._height / 2
     }
 
     set x(x) {
@@ -80,7 +88,9 @@ export class Fish {
     }
 
     set width(width) {
-        this._width = width;
+        if (FishWidth >= width) {
+            this._width = width;
+        }
     }
 
     get height() {
@@ -88,7 +98,9 @@ export class Fish {
     }
 
     set height(height) {
-        this._height = height;
+        if (FishHeight >= height) {
+            this._height = height;
+        }
     }
 
     get flip() {
@@ -122,13 +134,13 @@ export class Fish {
             case "W":
             case "ㅈ":
             case "ㅉ":
-                eventKey='w';
+                eventKey = 'w';
                 this.vecter.up = status;
                 break;
             case "a":
             case "A":
             case "ㅁ":
-                eventKey='a';
+                eventKey = 'a';
                 this.vecter.left = status;
                 if (status) {
                     this.flip = true;
@@ -139,13 +151,13 @@ export class Fish {
             case "s":
             case "S":
             case "ㄴ":
-                eventKey='s';
+                eventKey = 's';
                 this.vecter.down = status;
                 break;
             case "d":
             case "D":
             case "ㅇ":
-                eventKey='d';
+                eventKey = 'd';
                 this.vecter.right = status;
                 if (status) {
                     this.flip = false;
@@ -156,9 +168,9 @@ export class Fish {
             default:
                 break
         }
-        if(status){
+        if (status) {
             document.querySelector(`.btn.btn_${eventKey}`)?.classList.add('active');
-        }else{
+        } else {
             document.querySelector(`.btn.btn_${eventKey}`)?.classList.remove('active');
         }
     }

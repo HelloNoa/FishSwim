@@ -1,4 +1,4 @@
-import { IMAGE } from "./index.js";
+import { FishHeight, FishWidth, IMAGE } from "./index.js";
 export class Fish {
     constructor(_x = 0, _y = 0, _moveSpeed = 1, _width = 10, _height = 10, _img = IMAGE.main) {
         this.x = _x;
@@ -17,6 +17,12 @@ export class Fish {
     }
     get x() {
         return this._x;
+    }
+    get mx() {
+        return this._x + this._width / 2;
+    }
+    get my() {
+        return this._y + this._height / 2;
     }
     set x(x) {
         this._x = x;
@@ -49,13 +55,17 @@ export class Fish {
         return this._width;
     }
     set width(width) {
-        this._width = width;
+        if (FishWidth >= width) {
+            this._width = width;
+        }
     }
     get height() {
         return this._height;
     }
     set height(height) {
-        this._height = height;
+        if (FishHeight >= height) {
+            this._height = height;
+        }
     }
     get flip() {
         return this._flip;
