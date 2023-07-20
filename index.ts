@@ -102,16 +102,32 @@ window.onload = () => {
     document.querySelector('img.img.gameover').addEventListener('click', (e: Event) => {
         (e.target as HTMLElement).style.display = 'none';
     });
-    document.querySelectorAll('.btn').forEach(e => e.addEventListener('mousedown', (e: Event) => {
-        const key = e.currentTarget.classList[1].split('btn_')[1];
-        e.currentTarget.classList.add('active');
-        Player.setVecter(key, true);
-    }))
-    document.querySelectorAll('.btn').forEach(e => e.addEventListener('mouseup', (e: Event) => {
-        const key = e.currentTarget.classList[1].split('btn_')[1];
-        e.currentTarget.classList.remove('active');
-        Player.setVecter(key, false);
-    }))
+    document.querySelectorAll('.btn').forEach(e => {
+        const _func = (e)=>{
+            const key = e.currentTarget.classList[1].split('btn_')[1];
+            e.currentTarget.classList.add('active');
+            Player.setVecter(key, true);
+        }
+        e.addEventListener('touchstart', (e: Event) => {
+            _func(e);
+        })
+        e.addEventListener(' mousedown', (e: Event) => {
+            _func(e);
+        })
+    })
+    document.querySelectorAll('.btn').forEach(e => {
+        const _func = (e)=>{
+            const key = e.currentTarget.classList[1].split('btn_')[1];
+            e.currentTarget.classList.remove('active');
+            Player.setVecter(key, false);
+        }
+        e.addEventListener('touchend', (e: Event) => {
+            _func(e);
+        })
+        e.addEventListener('mouseup', (e: Event) => {
+            _func(e);
+        })
+    })
     setDPI();
     console.log("onload")
     setInterval(move, 10)

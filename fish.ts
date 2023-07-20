@@ -116,7 +116,6 @@ export class Fish {
     }
 
     setVecter(key, status) {
-        e.currentTarget.classList.add('active');
         let eventKey = '';
         switch (key) {
             case "w":
@@ -158,9 +157,9 @@ export class Fish {
                 break
         }
         if(status){
-            document.querySelector(`.btn.btn_${eventKey}`).classList.add('active');
+            document.querySelector(`.btn.btn_${eventKey}`)?.classList.add('active');
         }else{
-            document.querySelector(`.btn.btn_${eventKey}`).classList.remove('active');
+            document.querySelector(`.btn.btn_${eventKey}`)?.classList.remove('active');
         }
     }
 

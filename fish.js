@@ -76,7 +76,7 @@ export class Fish {
         this._vecter = vecter;
     }
     setVecter(key, status) {
-        e.currentTarget.classList.add('active');
+        var _a, _b;
         let eventKey = '';
         switch (key) {
             case "w":
@@ -120,10 +120,10 @@ export class Fish {
                 break;
         }
         if (status) {
-            document.querySelector(`.btn.btn_${eventKey}`).classList.add('active');
+            (_a = document.querySelector(`.btn.btn_${eventKey}`)) === null || _a === void 0 ? void 0 : _a.classList.add('active');
         }
         else {
-            document.querySelector(`.btn.btn_${eventKey}`).classList.remove('active');
+            (_b = document.querySelector(`.btn.btn_${eventKey}`)) === null || _b === void 0 ? void 0 : _b.classList.remove('active');
         }
     }
 }
