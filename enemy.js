@@ -1,5 +1,6 @@
 import { Fish } from './fish.js';
-import { height, IMAGE, width } from "./index.js";
+import { height, IMAGE, Player, width } from "./index.js";
+import { d2d } from "./util/index.js";
 export class Enemy extends Fish {
     constructor(x = 0, y = 0, moveSpeed = 1, width = 10, height = 10, img = IMAGE.green) {
         super(x, y, moveSpeed, width, height, img);
@@ -28,10 +29,19 @@ export class Enemy extends Fish {
             this.addForceXY(this.moveSpeed, 0);
         }
     }
+    crash() {
+        if (d2d(Player.mx, Player.my, this.mx, this.my) <= Player.height / 2) {
+            this.setRandomStartingPosition();
+            Player.width *= 1.01;
+            Player.height *= 1.01;
+            console.log('먹었당');
+        }
+    }
     update() {
         if (this.x <= -width * 0.5 || this.x >= width * 1.5) {
             this.setRandomStartingPosition();
         }
+        this.crash();
     }
 }
 //# sourceMappingURL=enemy.js.map
