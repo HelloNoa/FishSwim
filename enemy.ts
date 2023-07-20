@@ -32,7 +32,7 @@ export class Enemy extends Fish {
     }
 
     crash() {
-        if (d2d(Player.mx, Player.my, this.mx, this.my) <= Player.height / 2) {
+        if (d2d(Player.mx, Player.my, this.mx, this.my) <= Math.max(this.height, Player.height) * 0.3) {
             this.setRandomStartingPosition();
             Player.width *= 1.01;
             Player.height *= 1.01;
