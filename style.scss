@@ -1,6 +1,8 @@
 $breakpoint-mobile: 320px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
+
+$btn_size: 100px;
 @mixin min {
   @media (max-width: #{$breakpoint-mobile - 1px}) {
     @content;
@@ -59,9 +61,9 @@ body {
 
     .btn {
       display: block;
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
+      width: $btn_size;
+      height: $btn_size;
+      line-height: $btn_size;
       border: 1px solid white;
       box-sizing: border-box;
       font-weight: bolder;
@@ -74,7 +76,7 @@ body {
         left: 50%;
         transform: translateX(-50%);
         font-size: 1.6em;
-        line-height: 50px;
+        line-height: $btn_size;
       }
 
       &.btn_w {
