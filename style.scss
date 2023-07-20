@@ -120,6 +120,27 @@ body {
       }
     }
 
+    ul.fishList {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        opacity: 0.2;
+
+        &.active {
+          opacity: 1;
+        }
+
+        img {
+          max-width: 100px;
+          max-height: 50px;
+          width: 10vw;
+          height: 5vw;
+        }
+      }
+    }
+
     canvas#game {
       width: 696px;
       height: 564px;
