@@ -88,7 +88,7 @@ export class Fish {
     }
 
     set width(width) {
-        if (FishWidth >= width) {
+        if (FishWidth * 5 >= width) {
             this._width = width;
         }
     }
@@ -98,7 +98,7 @@ export class Fish {
     }
 
     set height(height) {
-        if (FishHeight >= height) {
+        if (FishHeight * 5 >= height) {
             this._height = height;
         }
     }
