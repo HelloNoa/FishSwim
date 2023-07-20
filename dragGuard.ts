@@ -1,10 +1,10 @@
 // 오른쪽 클릭 방지
-document.oncontextmenu = function() {
+document.oncontextmenu = function () {
     return false;
 }
 
 // 드래그 방지
-var omitformtags = ["input", "textarea", "select"]
+var omitformtags: string | string[] = ["input", "textarea", "select"]
 omitformtags = omitformtags.join("|")
 
 function disableselect(e) {
@@ -17,7 +17,7 @@ function reEnable() {
 }
 
 if (typeof document.onselectstart != "undefined")
-    document.onselectstart = new Function("return false")
+    document.onselectstart = () => false;
 else {
     document.onmousedown = disableselect
     document.onmouseup = reEnable

@@ -13,7 +13,7 @@ function reEnable() {
     return true;
 }
 if (typeof document.onselectstart != "undefined")
-    document.onselectstart = new Function("return false");
+    document.onselectstart = () => false;
 else {
     document.onmousedown = disableselect;
     document.onmouseup = reEnable;
