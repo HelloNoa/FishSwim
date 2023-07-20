@@ -63,7 +63,7 @@ const ARRAY = [
 ]
 const EnemyFish = ARRAY;
 // const EnemyFish = new Array(10).fill('o').map(e => new Enemy(0, 0, Math.random() + 0.1, 100, 50, IMAGE.green))
-export const Player = new Fish(200, 300, 1.5, FishWidth * 0.5, FishHeight * 0.5, IMAGE.main);
+export const Player = new Fish(200, 300, 1.5, FishWidth * 0.17, FishHeight * 0.17, IMAGE.main);
 
 const BGImg = ((ms: number) => {
     let idx = 0;
