@@ -1,6 +1,7 @@
 import { Fish } from './fish.js';
 import { Enemy } from './enemy.js';
 import { setImg } from './util/index.js';
+import { Score } from "./score.js";
 export const IMAGE = {
     main: [
         setImg('./fishgame/nooki/mainfish1.png'),
@@ -171,6 +172,9 @@ const move = () => {
         ctx.drawImage(Player.img[ani], -Player.x, Player.y, Player.width, Player.height);
         ctx.restore();
     }
+    ctx.font = "24px serif";
+    ctx.fillText(`${Score.score}`, 50, 50);
+    ctx.stroke();
 };
 const setDPI = () => {
     // 디스플레이 크기 설정 (css 픽셀)

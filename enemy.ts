@@ -1,6 +1,7 @@
 import {Fish} from './fish.js';
 import {FishHeight, FishWidth, height, IMAGE, Player, width} from "./index.js";
 import {d2d} from "./util/index.js";
+import {Score} from "./score.js";
 
 export class Enemy extends Fish {
     constructor(x = 0, y = 0, moveSpeed = 1, width = 10, height = 10, img: HTMLImageElement[] = IMAGE.green) {
@@ -35,7 +36,6 @@ export class Enemy extends Fish {
         if (d2d(Player.mx, Player.my, this.mx, this.my) <= Math.max(this.height, Player.height) * 0.3) {
             const delta = this.width / FishWidth
             const PlayerDelta = Player.width / FishWidth;
-            console.log(PlayerDelta)
             if (delta > PlayerDelta) {
                 console.log('먹혔당');
                 Player.width = Math.max(FishWidth * 0.05, Player.width * 0.99);
@@ -45,6 +45,7 @@ export class Enemy extends Fish {
                 Player.width *= (1 + delta * 0.1);
                 Player.height *= (1 + delta * 0.1);
                 console.log('먹었당');
+                Score.score += delta * 10;
             }
             document.querySelectorAll('ul.fishList li').forEach(e => e.classList.remove('active'));
             if (PlayerDelta >= 0.1) document.querySelectorAll('ul.fishList li')[0].classList.add('active')
